@@ -29,7 +29,7 @@ CFLAGS = -Wall -Wextra -Werror
 	$(CC) $(CFLAGS) -I $(INCS) -c $< -o $@  
 
 # Rule to compile the main library:
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(BONUS_OBJS)
 	$(LIBC) $(NAME) $(OBJS)
 	ranlib $(NAME)
 
