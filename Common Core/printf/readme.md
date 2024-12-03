@@ -1,4 +1,5 @@
 The objective of this project was to recreate the printf functions. As no bonus were made, I just replicated the printf function to print the following variable types cspdiux%:
+
 c for characters;
 
 s for strings;
