@@ -1,0 +1,10 @@
+I was thinking about another function to execute the moves of push swap following the mechanical turk algorithm:
+
+Let num_a be the number that represents the content of the top node from stack a.
+The algorithm is along these lines:
+Be a and b stacks a and b, respectively.
+if(num_a < min((b.content) || (num_a > max(b.content)) // it should compare with the content of all numbers of stack b
+{
+while ((*b)->top->content  != max_num_b) // while the the top content of b is not the maximum
+{
+if ((*b)->top->next->content == max_num_b)

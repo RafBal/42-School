@@ -1,49 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotations.c                                :+:      :+:    :+:   */
+/*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 13:12:04 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/01/15 07:58:40 by rbaldin          ###   ########.fr       */
+/*   Created: 2025/01/14 10:52:20 by rbaldin           #+#    #+#             */
+/*   Updated: 2025/01/25 12:50:46 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotation(t_stack **s, const char *op)
+void	rotation(t_stack **s, const char *op)
 {
-	t_stack	*l_sec;
-	t_stack *l;
-	if (!s || !(*s) || !(*s)->next)
+	t_stack	*reserve;
+	t_stack	*temp;
+
+	if (!s || !(*s) || !((*s)->next))
 		return;
-	l_sec = NULL;
-	l = *s;
-	while (l->next)
-	{
-		l_sec = l;
-		l = l->next;
-	}
-	l_sec->next = NULL;
-	l->next = *s;
-	*s = l;
+	reserve = *s;
+	*s = (*s)->next;
+	reserve->next = NULL;
+	temp = *s;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = reserve;
 	ft_putendl_fd(op, 1);
 }
 
-void	rra(t_stack **a)
+void	ra(t_stack **stacka)
 {
-	reverse_rotation(a, "rra");
+	rotation(stacka, "ra");
 }
 
-void	rrb(t_stack **b)
+void	rb(t_stack **stackb)
 {
-	reverse_rotation(b, "rrb");
+	rotation(stackb, "rb");
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rr(t_stack **stacka, t_stack **stackb)
 {
-	reverse_rotation(a, NULL);
-	reverse_rotation(b, NULL);
-	ft_putendl_fd("rrr", 1);
-}	
+	rotation(stacka, NULL);
+	rotation(stackb, NULL);
+	ft_putendl_fd("rr", 1);
+}
