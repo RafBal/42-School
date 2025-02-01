@@ -6,17 +6,28 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:34:11 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/01/15 10:24:41 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/01/31 13:28:40 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+
+static	void	*removing_stack(t_stack **st)
+{
+	if (!st || !(*st))
+		return (NULL);
+	ft_lstclear(&((*st)->top), free);
+	free(*st);
+	return (NULL);
+}
 
 t_stack	*stack_initializing(int	*nums, int *size)
 {
 	t_stack	*stackt;
 	t_list	*nodet;
 	int	it;
+	int	*value;
 	
 	stackt = ft_calloc(1, sizeof(t_stack));
 	if (!stackt)
@@ -26,13 +37,14 @@ t_stack	*stack_initializing(int	*nums, int *size)
 	it = *size;
 	while (it > 0)
 	{
-		nodet = ft_lstnew((void *)(long)nums[it - 1]);
-		if (!nodet)
+		value = malloc(sizeof(long));
+		if (!value || !(nodet = ft_lstnew(value)))
 		{
-			ft_lstclear(&(stackt->top), free);
-			free(stackt);
-			return (NULL); 
+			free(value);
+			return(removing_stack(&stackt));
 		}
+		*value = (long)nums[it - 1];
+		//printf("Adding to stack: %d\n", nums[it - 1]);
 		ft_lstadd_front(&(stackt->top), nodet);
 		it--;
 	}
@@ -55,7 +67,8 @@ void	stack_freeing(t_stack **stack)
 {
 	if (!stack || !(*stack))
 		return;
-	ft_lstclear(&((*stack)->top), free);
+	if ((*stack)->top)
+		ft_lstclear(&((*stack)->top), free);
 	free(*stack);
 	*stack = NULL;
 }

@@ -6,27 +6,28 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:52:20 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/01/25 12:50:46 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/01/28 10:58:13 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotation(t_stack **s, const char *op)
+static	void	rotation(t_stack **s, char *op)
 {
-	t_stack	*reserve;
-	t_stack	*temp;
+	t_list	*reserve;
+	t_list	*temp;
 
-	if (!s || !(*s) || !((*s)->next))
+	if (!s || !(*s) || !(*s)->top || !(*s)->top->next)
 		return;
-	reserve = *s;
-	*s = (*s)->next;
+	reserve = (*s)->top;
+	(*s)->top = (*s)->top->next;
 	reserve->next = NULL;
-	temp = *s;
+	temp = (*s)->top;
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = reserve;
-	ft_putendl_fd(op, 1);
+	if (op)
+		ft_putendl_fd(op, 1);
 }
 
 void	ra(t_stack **stacka)

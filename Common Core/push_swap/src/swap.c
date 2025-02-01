@@ -1,50 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotation.c                                 :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 13:12:04 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/01/28 11:02:17 by rbaldin          ###   ########.fr       */
+/*   Created: 2025/01/11 14:08:12 by rbaldin           #+#    #+#             */
+/*   Updated: 2025/01/28 12:37:25 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	void	reverse_rotation(t_stack **s, char *op)
+static	void	swap(t_stack **stack, char *op)
 {
-	t_list	*l_sec;
-	t_list	*l;
-	if (!s || !(*s) || !(*s)->top || !(*s)->top->next)
+	t_list	*swap;
+
+	if (!stack || !(*stack) || !(*stack)->top || !((*stack)->top->next))
 		return;
-	l_sec = NULL;
-	l = (*s)->top;
-	while (l->next)
-	{
-		l_sec = l;
-		l = l->next;
-	}
-	l_sec->next = NULL;
-	l->next = (*s)->top;
-	(*s)->top = l;
+	swap = (*stack)->top;
+	(*stack)->top = (*stack)->top->next;
+	swap->next = (*stack)->top->next;
+	(*stack)->top->next = swap;
 	if (op)
 		ft_putendl_fd(op, 1);
 }
 
-void	rra(t_stack **a)
+void	sa(t_stack **stacka)
 {
-	reverse_rotation(a, "rra");
+	swap(stacka, "sa");
 }
 
-void	rrb(t_stack **b)
+void	sb(t_stack **stackb)
 {
-	reverse_rotation(b, "rrb");
+	swap(stackb, "sb");
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	ss(t_stack **stacka, t_stack **stackb)
 {
-	reverse_rotation(a, NULL);
-	reverse_rotation(b, NULL);
-	ft_putendl_fd("rrr", 1);
+	swap(stacka, NULL);
+	swap(stackb, NULL);
+	ft_putendl_fd("ss", 1);
 }
