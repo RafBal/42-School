@@ -21,7 +21,7 @@ bool	sorted_already_b(t_stack **stack_b)
 	now = (*stack_b)->top;
 	while (now && now->next)
 	{
-		if (*(long *)now->content < *(long *)now->next->content)
+		if (*(int *)now->content < *(int *)now->next->content)
 			return (false);
 		now = now->next;
 	}

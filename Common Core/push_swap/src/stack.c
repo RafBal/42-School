@@ -6,7 +6,7 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:34:11 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/01/31 13:28:40 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:23:46 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ t_stack	*stack_initializing(int	*nums, int *size)
 	it = *size;
 	while (it > 0)
 	{
-		value = malloc(sizeof(long));
+		value = malloc(sizeof(int));
 		if (!value || !(nodet = ft_lstnew(value)))
 		{
 			free(value);
 			return(removing_stack(&stackt));
 		}
-		*value = (long)nums[it - 1];
-		//printf("Adding to stack: %d\n", nums[it - 1]);
+		*value = (int)nums[it - 1];
+//		printf("Adding to stack: %d\n", nums[it - 1]);
 		ft_lstadd_front(&(stackt->top), nodet);
 		it--;
 	}

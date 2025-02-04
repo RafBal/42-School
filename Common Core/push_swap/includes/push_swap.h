@@ -6,7 +6,7 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 09:05:28 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/02/01 16:58:12 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:14:30 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,17 @@ void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 bool	sorted_already(t_stack *s);
-void	radix(t_stack **a, t_stack **b, int off_num);
+void    values_simplifying(t_stack *a);
+void	radix(t_stack **a, t_stack **b);//, int off_num);
 typedef	struct s_values
 {
-	long	top;
+	int	top;
 	bool	tv;
-	long	next;
+	int	next;
 	bool	nv;
-	long	next2;
+	int	next2;
 	bool	n2v;
-	long	bottom;
+	int	bottom;
 	bool	bv;
 }	t_values;
 void	logical_optimization(t_stack **st_a, t_stack **st_b);

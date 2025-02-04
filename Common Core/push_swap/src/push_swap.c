@@ -6,12 +6,12 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:21:57 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/02/01 16:54:48 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:17:44 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 static	int	min_finding(t_stack **a)
 {
 	int	min_num;
@@ -22,7 +22,7 @@ static	int	min_finding(t_stack **a)
 	min_num = INT_MAX;
 	while (a_reserv)
 	{
-		n_to_compare = *(long *)(a_reserv->content);
+		n_to_compare = *(int *)(a_reserv->content);
 		if (n_to_compare < min_num)
 			min_num = n_to_compare;
 		a_reserv = a_reserv->next;
@@ -31,16 +31,16 @@ static	int	min_finding(t_stack **a)
 		return (min_num);
 	return (0);
 }
-
+*/
 static	void	three_sort(t_stack *a, t_list *top, t_list *middle, t_list *bottom)
 {
 	int	topc;
 	int	middlec;
 	int	bottomc;
 
-	topc = *(long *)(top->content);
-	middlec = *(long *)(middle->content);
-	bottomc = *(long *)(bottom->content);
+	topc = *(int *)(top->content);
+	middlec = *(int *)(middle->content);
+	bottomc = *(int *)(bottom->content);
 	if (topc < middlec && middlec && middlec > bottomc)
 	{
 		rra(&a);
@@ -68,7 +68,7 @@ bool	sorted_already(t_stack *s)
 	now = s->top;
 	while (now && now->next)
 	{
-		if (*(long *)now->content > *(long *)now->next->content)
+		if (*(int *)now->content > *(int *)now->next->content)
 			return (false);
 		now = now->next;
 	}
@@ -80,7 +80,7 @@ void	push_swap(t_stack **a, t_stack **b)
 	t_list	*high;
 	t_list	*medium;
 	t_list	*low;
-	int	off_num;
+	//int	off_num;
 
 	if (sorted_already(*a))
 		return;
@@ -98,7 +98,8 @@ void	push_swap(t_stack **a, t_stack **b)
 	}
 	else
 	{
-		off_num = min_finding(a);
-		radix(a, b, off_num);
+		//off_num = min_finding(a);
+		values_simplifying(*a);
+		radix(a, b);//, off_num);
 	}
 }

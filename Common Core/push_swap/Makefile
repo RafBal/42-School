@@ -4,7 +4,7 @@ NAME = push_swap
 # creating an executable called push_swap.
 
 # Source files for the project
-SRCS = main.c src/push_swap.c src/input_checking.c src/reverse_rotation.c src/stack.c src/radix.c src/rotation.c src/logical_optimization.c src/swap.c src/updating.c src/push.c libft/ft_lstclear_bonus.c libft/ft_lstnew_bonus.c libft/ft_lstadd_front_bonus.c libft/ft_lstlast_bonus.c libft/ft_lstdelone_bonus.c src/radix_b.c src/sorted_already_b.c
+SRCS = main.c src/push_swap.c src/input_checking.c src/reverse_rotation.c src/stack.c src/radix.c src/rotation.c src/logical_optimization.c src/swap.c src/updating.c src/push.c libft/ft_lstclear_bonus.c libft/ft_lstnew_bonus.c libft/ft_lstadd_front_bonus.c libft/ft_lstlast_bonus.c libft/ft_lstdelone_bonus.c src/radix_b.c src/sorted_already_b.c src/values_simplifying.c
 # source files (.c) to build the program.
 
 # Object files derived from source files

@@ -24,11 +24,11 @@ t_values	updating(t_stack **st)
 	uv.bv = false;
 	if (!st || !(*st) || !((*st)->top))
 		return (uv);
-	uv.top = *(long *)((*st)->top->content);
+	uv.top = *(int *)((*st)->top->content);
  	uv.tv = true;
  	if ((*st)->top->next)
 	{
- 		uv.next = *(long *)((*st)->top->next->content);
+ 		uv.next = *(int *)((*st)->top->next->content);
  		uv.nv = true;
  	}
 	return (updating2(st, uv));
@@ -42,13 +42,13 @@ static	t_values	updating2(t_stack **st, t_values uv)
 		return (uv);
 	if ((*st)->top && (*st)->top->next && (*st)->top->next->next)
 	{
-		uv.next2 = *(long *)((*st)->top->next->next->content);
+		uv.next2 = *(int *)((*st)->top->next->next->content);
 		uv.n2v = true;
 	}
 	last = ft_lstlast((*st)->top);
 	if (last)
 	{
-		uv.bottom = *(long *)(last->content);
+		uv.bottom = *(int *)(last->content);
 		uv.bv = true;
 	}
 	return (uv);

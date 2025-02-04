@@ -6,12 +6,12 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:31:20 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/02/01 17:22:15 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/03 09:21:53 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 static	void	stack_reverse_rotating(t_stack **a, t_stack **b, int ca, int cb)
 {
 	bool	flag_rra;
@@ -65,7 +65,7 @@ static	int	cost_calculating(t_stack **s, int bt, int bin_dig)
 	t_list	*copy;
 	int	index;
 	int	size_s;
-	long	n;
+	int	n;
 	if (!s || !(*s) || !((*s)->top))
 		return (0);
 	index = 0;
@@ -73,7 +73,7 @@ static	int	cost_calculating(t_stack **s, int bt, int bin_dig)
 	size_s = (*s)->size;
 	while (copy)
 	{
-		n = *(long *)(copy->content);
+		n = *(int *)(copy->content);
 		if (((n >> bt) & 1) == bin_dig)
 			break;
 		index++;
@@ -95,7 +95,7 @@ static	void	spinning(t_stack **a_st, t_stack **b_st, int bit)
 	stack_rotating(a_st, b_st, cost_a, cost_b);
 	stack_reverse_rotating(a_st, b_st, cost_a, cost_b);
 }
-
+*/
 
 void	radix_b(t_stack **sta, t_stack **stb, int bt)
 {
@@ -105,16 +105,20 @@ void	radix_b(t_stack **sta, t_stack **stb, int bt)
 
 	sizb = (*stb)->size;
 	i = -1;
-	while (++i < sizb && !sorted_already_b(stb))
+	while (++i < sizb  && !sorted_already(*sta))
 	{
 		if ((*stb) && (*stb)->top)
-			nb = *(long *)((*stb)->top->content);
+			nb = *(int *)((*stb)->top->content);
 		else
 			break;
 		if (((nb >> bt) & 1) == 1)
 			pa(stb, sta);
 		else
-			spinning(sta, stb, bt);
+			rb(stb);
+		//spinning(sta, stb, bt);
 	}
+	if (sorted_already(*sta))
+		while ((*stb)->size > 0)
+			pa(stb, sta);
 	//logical_optimization(sta, stb);
 }
