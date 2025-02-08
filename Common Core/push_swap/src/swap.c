@@ -6,7 +6,7 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 14:08:12 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/01/28 12:37:25 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/04 10:03:52 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	void	swap(t_stack **stack, char *op)
 	t_list	*swap;
 
 	if (!stack || !(*stack) || !(*stack)->top || !((*stack)->top->next))
-		return;
+		return ;
 	swap = (*stack)->top;
 	(*stack)->top = (*stack)->top->next;
 	swap->next = (*stack)->top->next;

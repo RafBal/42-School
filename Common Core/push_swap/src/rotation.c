@@ -6,7 +6,7 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:52:20 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/01/28 10:58:13 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/04 10:01:49 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static	void	rotation(t_stack **s, char *op)
 	t_list	*temp;
 
 	if (!s || !(*s) || !(*s)->top || !(*s)->top->next)
-		return;
+		return ;
 	reserve = (*s)->top;
 	(*s)->top = (*s)->top->next;
 	reserve->next = NULL;

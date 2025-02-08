@@ -6,26 +6,24 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 09:48:46 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/01/30 11:14:30 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/05 09:37:54 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	int	digit_only(const char *str);
-
 static	int	*numbers_parsing(int argc, char *argv[], int *size);
 
 static	int	*numbers_parsing2(char **argv, int *size);
 
-static	int	duplicated(int  *nums, int *size);
+static	int	duplicated(int *nums, int *size);
 
 t_stack	*input_checking(int argc, char **argv)
 {
-	int	*nums;
+	int		*nums;
 	t_stack	*stacka;
-	int	size;
-	int	*size_ptr;
+	int		size;
+	int		*size_ptr;
 
 	size = 0;
 	size_ptr = &size;
@@ -91,8 +89,8 @@ static	int	*split_freeing(char **split)
 
 static	int	*numbers_parsing2(char **argv, int *size)
 {
-	int	*nums;
-	int	*nums_start;
+	int		*nums;
+	int		*nums_start;
 	char	**split_nums;
 	char	**split_start;
 
@@ -135,20 +133,4 @@ static	int	duplicated(int	*nums, int *size)
 		j++;
 	}
 	return (0);
-}
-
-static	int	digit_only(const char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
 }

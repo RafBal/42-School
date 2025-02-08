@@ -6,7 +6,7 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:12:04 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/01/28 11:02:17 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/04 10:03:09 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ static	void	reverse_rotation(t_stack **s, char *op)
 {
 	t_list	*l_sec;
 	t_list	*l;
+
 	if (!s || !(*s) || !(*s)->top || !(*s)->top->next)
-		return;
+		return ;
 	l_sec = NULL;
 	l = (*s)->top;
 	while (l->next)

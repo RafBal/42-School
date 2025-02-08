@@ -6,7 +6,7 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 12:14:03 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/02/03 11:20:39 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/06 11:22:07 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static	void	replacing(int *ar, int size, t_list *n)
 			if (*(int *)n->content == ar[i])
 			{
 				*(int *)n->content = i;
-	//			printf("n->content = %d, ar[i] = %d, and i = %d\n", *(int *)n->content, ar[i], i);
-				break;
+				break ;
 			}
 		}
 		n = n->next;
@@ -58,15 +57,15 @@ static	int	*bubble_sorting(int *array, int length)
 
 void	values_simplifying(t_stack *a)
 {
-	int	size;
-	int	*sorted_arr;
+	int		size;
+	int		*sorted_arr;
 	t_list	*node;
-	int	i;
+	int		i;
 
 	size = a->size;
 	sorted_arr = malloc(sizeof(int) * size);
 	if (!sorted_arr)
-		return;
+		return ;
 	node = a->top;
 	i = -1;
 	while (++i < size)
