@@ -17,26 +17,33 @@ CLIENT_SRCS = client.c \
 	      libft/ft_atoi.c \
 	      libft/ft_isdigit.c
 
+CLIENT_BONUS_SRCS = client_bonus.c \
+		    libft/ft_atoi.c \
+		    libft/ft_isdigit.c
+
 SERVER_SRCS = server.c
 
 # Object files
 CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
+CLIENT_BONUS_OBJS = $(CLIENT_BONUS_SRCS:.c=.o)
 SERVER_OBJS = $(SERVER_SRCS:.c=.o)
 
 # Executables
 CLIENT = client
-CLIENT2 = client2
+CLIENT2 = client_bonus
 SERVER = server
 
 # Default targets
-all: $(CLIENT) $(SERVER) #$(CLIENT2)
+all: $(CLIENT) $(SERVER)
 
-# Build client executable
-$(CLIENT): $(CLIENT_OBJS) $(FT_PRINTF_LIB)
-	$(CC) $(C_FLAGS) $(INCLUDES) -o $(CLIENT) $(CLIENT_OBJS) -L$(FT_PRINTF_DIR) -lftprintf
+$(CLIENT): $(CLIENT_OBJS)                                        
+	$(CC) $(C_FLAGS) -o $(CLIENT) $(CLIENT_OBJS)
 
-#$(CLIENT2): $(CLIENT_OBJS)
-#	$(CC) $(C_FLAGS) -o $(CLIENT2) $(CLIENT_OBJS)
+# Build clients executable
+bonus: $(CLIENT2) $(SERVER)
+$(CLIENT2): $(CLIENT_BONUS_OBJS) $(FT_PRINTF_LIB)
+	$(CC) $(C_FLAGS) $(INCLUDES) -o $(CLIENT2) $(CLIENT_BONUS_OBJS) \
+		-L$(FT_PRINTF_DIR) -lftprintf
 
 # Build server executable (target (executable): dependencies (.o and .a files))
 $(SERVER): $(SERVER_OBJS) $(FT_PRINTF_LIB)
@@ -63,12 +70,12 @@ libft/%.o: libft/%.c
 	$(CC) $(C_FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(CLIENT_OBJS) $(SERVER_OBJS)
+	rm -f $(CLIENT_OBJS) $(SERVER_OBJS) $(CLIENT_BONUS_OBJS)
 
 fclean: clean
-	rm -f $(CLIENT) $(SERVER)
+	rm -f $(CLIENT) $(SERVER) $(CLIENT2)
 	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 	
-re: fclean all
+re: fclean clean all bonus
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

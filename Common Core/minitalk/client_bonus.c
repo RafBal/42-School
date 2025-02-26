@@ -6,11 +6,13 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:14:36 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/02/26 15:50:24 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/16 13:49:19 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+int	g_bit_count = 0;
 
 void	char_sending(int p, unsigned char c)
 {
@@ -47,6 +49,7 @@ Output: 00000010
 static	void	acknowledging(int s)
 {
 	(void)s;
+	g_bit_count++;
 }
 
 int	main(int argc, char **argv)
@@ -67,6 +70,8 @@ int	main(int argc, char **argv)
 				i++;
 			}
 			char_sending(pid, '\0');
+			if (++i == (g_bit_count / 8))
+				ft_printf("Message sent successfully.\n");
 		}
 	}
 	return (0);
@@ -82,4 +87,10 @@ int	main(int argc, char **argv)
 char_sending(pid, '\0'); avoids signal corruption, as the server might
 continue to read anything that do not belong to the original message
 without this termination.
-*/
+
+Because the acknowledging function contains just one parameter and does
+not return any value, a global variable was used and then compared 
+to acknowledge the message.
+
+1 byte = 8 bits = 1 character
+ */
