@@ -8,7 +8,7 @@ SRCS = main.c src/push_swap.c src/input_checking.c src/reverse_rotation.c src/st
 # source files (.c) to build the program.
 
 # Object files derived from source files
-OBJS = $(SRCS: .c=.o)
+OBJS = $(SRCS:.c=.o)
 # substitutes the c files with o files.
 
 # Path to the libft library directory

@@ -6,7 +6,7 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 09:05:28 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/02/07 12:55:08 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/10 13:45:35 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # include "../libft/libft.h"
 # include <limits.h>
 # include <stdbool.h>
-# include <stdio.h>
 
 typedef struct s_stack
 {
 	t_list	*top;
 	int		size;
 }	t_stack;
+bool	ft_proint(const char *a);
 t_stack	*input_checking(int argc, char **argv);
 t_stack	*stack_initializing(int *nums, int *size);
 int		digit_only(const char *str);

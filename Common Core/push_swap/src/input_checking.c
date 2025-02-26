@@ -6,7 +6,7 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 09:48:46 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/02/05 09:37:54 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:10:45 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static	int	*numbers_parsing2(char **argv, int *size)
 		return (NULL);
 	split_start = split_nums;
 	while (*split_nums)
-		if (!digit_only(*split_nums++))
+		if (!digit_only(*split_nums) || !ft_proint(*split_nums++))
 			return (split_freeing(split_start));
 	*size = split_nums - split_start;
 	if (*size <= 0)

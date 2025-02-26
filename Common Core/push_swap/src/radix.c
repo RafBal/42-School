@@ -6,13 +6,13 @@
 /*   By: rbaldin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:26:34 by rbaldin           #+#    #+#             */
-/*   Updated: 2025/02/08 18:11:56 by rbaldin          ###   ########.fr       */
+/*   Updated: 2025/02/10 15:36:53 by rbaldin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	void	radix_b(t_stack **sta, t_stack **stb, int bt)
+static	void	radix_b(t_stack **sta, t_stack **stb, int bt, int maxbits)
 {
 	int	i;
 	int	sizb;
@@ -23,7 +23,9 @@ static	void	radix_b(t_stack **sta, t_stack **stb, int bt)
 	while (++i < sizb && stb && *stb && (*stb)->top)
 	{
 		nb = *(int *)((*stb)->top->content);
-		if (((nb >> bt) & 1) == 1)
+		if (bt == maxbits)
+			pa(stb, sta);
+		else if (((nb >> bt) & 1) == 1)
 			pa(stb, sta);
 		else
 			rb(stb);
@@ -86,7 +88,7 @@ void	radix(t_stack **a, t_stack **b)
 			else
 				ra(a);
 		}
-		radix_b(a, b, bit + 1);
+		radix_b(a, b, bit + 1, nbits);
 	}
 	while ((*b) && (*b)->size > 0)
 		pa(b, a);
