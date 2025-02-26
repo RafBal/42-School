@@ -5,3 +5,5 @@ The stacks are data structures composed by lists, with each stack having one lis
 The stacks use push and swap operations to change the numbers positions.
 
 The algorithms used for this project were bubble sort (for data simplification) and radix sort (for the actual sorting).
+
+I got help from chatgpt, gemini AI tools, and from the GitHub user hu8813 to succeed in this project.
